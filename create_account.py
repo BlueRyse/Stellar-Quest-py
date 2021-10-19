@@ -1,4 +1,4 @@
-from stellar_sdk import Keypair, Network, Server, TransactionBuilder, Account
+from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 class create_account:
 
