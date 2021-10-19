@@ -1,6 +1,6 @@
 from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
-#This class permits to create an account on testnet or mainnet, used on create_account_script.py and create_random_account_script.py
+#This class allows to create an account on testnet or mainnet, used on create_account_script.py and create_random_account_script.py
 
 class create_account:
 
