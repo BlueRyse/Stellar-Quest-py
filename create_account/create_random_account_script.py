@@ -3,7 +3,7 @@ from stellar_sdk import Keypair, Server
 
 server = Server("https://horizon-testnet.stellar.org")
 new_account = Keypair.random()
-genesis_account = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
+genesis_account = "your genesis"
 balance = input("Please enter new account starting balance: ")
 
 account = create_account.create_account(server,genesis_account,new_account.public_key,balance)
