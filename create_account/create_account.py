@@ -4,9 +4,9 @@ from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 class create_account:
 
-    def __init__(self, server, source_secr_seed, new_acc_public_key, balance):
+    def __init__(self, source_secr_seed, new_acc_public_key, balance):
         self.mbase_fee = 100
-        self.server = server
+        self.server = Server("https://horizon-testnet.stellar.org")
         self.source = Keypair.from_secret(source_secr_seed)
         self.source_account = server.load_account(account_id=self.source.public_key)
         self.new_account = Keypair.from_public_key(new_acc_public_key)

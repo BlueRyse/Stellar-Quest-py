@@ -1,7 +1,6 @@
 import create_account
 from stellar_sdk import Keypair, Server
 
-server = Server("https://horizon-testnet.stellar.org")
 new_account = Keypair.random()
 genesis_account = "your genesis"
 balance = input("Please enter new account starting balance: ")
