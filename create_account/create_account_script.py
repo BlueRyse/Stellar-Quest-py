@@ -2,7 +2,7 @@ import create_account
 from stellar_sdk.server import Server
 
 server = Server("https://horizon-testnet.stellar.org")
-genesis_account = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
+genesis_account = "your_genesis"
 new_account_public_ID = input("Please enter the new account Public ID: ")
 balance = input("Please enter new account starting balance: ")
 
