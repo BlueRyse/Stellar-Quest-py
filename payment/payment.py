@@ -1,16 +1,14 @@
 from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
-#This class permits to create an account on testnet or mainnet, used on create_account_script.py and create_random_account_script.py
-
-class create_account:
-
-    def __init__(self, source_secr_seed, new_acc_public_key, balance):
+class payment:
+    def __init__(self, server, source_secr_seed, new_acc_public_key, amount, asset):
+        self.asset = asset
         self.mbase_fee = 100
-        self.server = Server("https://horizon-testnet.stellar.org")
+        self.server = server
         self.source = Keypair.from_secret(source_secr_seed)
-        self.source_account = self.server.load_account(account_id=self.source.public_key)
-        self.new_account = Keypair.from_public_key(new_acc_public_key)
-        self.balance = balance
+        self.source_account = server.load_account(account_id=self.source.public_key)
+        self.dest_account = Keypair.from_public_key(new_acc_public_key)
+        self.amount = amount
         self.create_transaction()
 
     def create_transaction(self):
@@ -20,10 +18,14 @@ class create_account:
                 network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
                 base_fee = self.mbase_fee
             )
-            .append_create_account_op(
-                destination=self.new_account.public_key, starting_balance = self.balance
-            )
-            .build()
+         .add_text_memo("Test_transaction")
+         .append_payment_op(
+            destination = self.dest_account.public_key,
+            asset_code = self.asset,
+            amount = self.amount
+        )
+         .set_timeout(30)  # Make this transaction valid for the next 30 seconds only
+         .build()
         )
         self.execute_transaction()
 
