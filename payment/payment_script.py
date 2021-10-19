@@ -2,10 +2,10 @@ import payment
 from stellar_sdk import Keypair, Server
 
 server = Server("https://horizon-testnet.stellar.org")
-source_secret = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
+source_secret = "your source secret seed"
 dest_account = input("Please, insert the destination account: ")
 amount = input("How many lumens would you like to send: ")
 
-pay = payment.payment(server, source_secret, dest_account, amount, "XLM")
+pay = payment.payment(source_secret, dest_account, amount, "XLM")
 
-print("Sent " + amount + "from " + pay.source.public_key + "to " + dest_account)
+print("Sent " + amount + " XLM \nfrom " + pay.source.public_key + "\nto " + dest_account)

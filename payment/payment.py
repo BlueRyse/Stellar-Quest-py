@@ -1,12 +1,12 @@
 from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 class payment:
-    def __init__(self, server, source_secr_seed, new_acc_public_key, amount, asset):
+    def __init__(self, source_secr_seed, new_acc_public_key, amount, asset):
         self.asset = asset
         self.mbase_fee = 100
-        self.server = server
+        self.server = Server("https://horizon-testnet.stellar.org")
         self.source = Keypair.from_secret(source_secr_seed)
-        self.source_account = server.load_account(account_id=self.source.public_key)
+        self.source_account = self.server.load_account(account_id=self.source.public_key)
         self.dest_account = Keypair.from_public_key(new_acc_public_key)
         self.amount = amount
         self.create_transaction()
