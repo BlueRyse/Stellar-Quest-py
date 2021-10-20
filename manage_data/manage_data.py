@@ -2,10 +2,10 @@ from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 class manage_data:
 
-    def __init__(self, source_secr_seed, data_name, data_value):
+    def __init__(self, source_secr_seed, data_name, data_value, fee = 100):
         self.data_name = data_name
         self.data_value = data_value
-        self.mbase_fee = 100
+        self.fee = fee
         self.server = Server("https://horizon-testnet.stellar.org")
         self.source = Keypair.from_secret(source_secr_seed)
         self.source_account = self.server.load_account(account_id=self.source.public_key)
@@ -16,7 +16,7 @@ class manage_data:
             TransactionBuilder(
                 source_account = self.source_account,
                 network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
-                base_fee = self.mbase_fee
+                base_fee = self.fee
             )
             .append_manage_data_op(
                 data_name=self.data_name, data_value = self.data_value
