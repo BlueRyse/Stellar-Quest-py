@@ -1,6 +1,6 @@
 import payment
 
-source_secret = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
+source_secret = "your source secret" 
 dest_account = input("Please, insert the destination account public key: ")
 asset = input("What asset you want to send? Type XLM if you want to send lumens ")
 if asset != "XLM":
