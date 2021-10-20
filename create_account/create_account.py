@@ -4,31 +4,29 @@ from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 class create_account:
 
-    def __init__(self, source_secr_seed, new_acc_public_key, balance):
-        self.mbase_fee = 100
+    def __init__(self, source_secr_seed, new_acc_public_key, balance, fee = 100):
+        self.fee = fee
         self.server = Server("https://horizon-testnet.stellar.org")
         self.source = Keypair.from_secret(source_secr_seed)
         self.source_account = self.server.load_account(account_id=self.source.public_key)
         self.new_account = Keypair.from_public_key(new_acc_public_key)
         self.balance = balance
-        self.create_transaction()
+        self.__create_transaction()
 
-    def create_transaction(self):
+    def __create_transaction(self):
         self.transaction = (
             TransactionBuilder(
                 source_account = self.source_account,
                 network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
-                base_fee = self.mbase_fee
+                base_fee = self.fee
             )
             .append_create_account_op(
                 destination=self.new_account.public_key, starting_balance = self.balance
             )
             .build()
         )
-        self.execute_transaction()
+        self.__execute_transaction()
 
-    def execute_transaction(self):
-        if self.transaction is None:
-            raise ValueError("Create transaction first")
+    def __execute_transaction(self):
         self.transaction.sign(self.source)
         self.response = self.server.submit_transaction(self.transaction)
