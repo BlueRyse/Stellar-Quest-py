@@ -1,6 +1,6 @@
 import payment
 
-source_secret = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
+source_secret = "your secret seed"
 dest_account = input("Please, insert the destination account public key: ")
 amount = input("How many lumens would you like to send: ")
 
