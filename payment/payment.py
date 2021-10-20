@@ -1,8 +1,11 @@
-from stellar_sdk import Keypair, Network, Server, TransactionBuilder
+from stellar_sdk import Keypair, Network, Server, TransactionBuilder, Asset
 
 class payment:
-    def __init__(self, source_secr_seed, dest_account_pb, amount, asset, fee = 100):
-        self.asset = asset
+    def __init__(self, source_secr_seed, dest_account_pb, amount, asset, asset_issuer = None, fee = 100):
+        if asset == "XLM":
+            self.asset = Asset.native()
+        else:
+            self.asset = Asset(asset, asset_issuer)
         self.fee = fee
         self.server = Server("https://horizon-testnet.stellar.org")
         self.source = Keypair.from_secret(source_secr_seed)
@@ -21,7 +24,8 @@ class payment:
          .add_text_memo("Test_transaction")
          .append_payment_op(
             destination = self.dest_account.public_key,
-            asset_code = self.asset,
+            asset_code = self.asset.code,
+            asset_issuer = self.asset.issuer,
             amount = self.amount
         )
          .set_timeout(30)  # Make this transaction valid for the next 30 seconds only
