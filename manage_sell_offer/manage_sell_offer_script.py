@@ -9,4 +9,4 @@ price = "2" #price per selling_code asset, in this case 1 testXLM sells for 2 XL
 manage_sell_offer.manage_sell_offer(source, selling_code, asset_issuer, amount, price, 1000)
 
 print("Added sell offer: " + "selling " + amount + " " + selling_code
-+  "\nfor " + price + "XLM each")
+    +  "\nfor " + price + " XLM each")
