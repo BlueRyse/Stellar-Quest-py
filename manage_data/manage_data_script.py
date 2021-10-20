@@ -1,5 +1,4 @@
 import manage_data
-from stellar_sdk import Keypair
 
 source_secret = "your secret seed"
 data_name = input("Insert the data name: ")
