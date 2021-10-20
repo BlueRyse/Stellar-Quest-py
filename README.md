@@ -8,4 +8,6 @@ Custom solutions (and useful stuff) in python for stellar quest Series 1, 2, 3
 
 -manage_data is useful to tackle Series 1 Quest 3. It lets you add a pair (data_name and data_value) to an account. Hello world :)
 
--add_signer is useful to tackle Series 1 Quest 4. You can add a new signer (with weight 1) to any account of your choice. 
+-add_signer is useful to tackle Series 1 Quest 4. You can add a new signer (with weight 1) to any account of your choice.
+
+-change_trust is useful to tackle Series 1 Quest 5. After you make a trustline and an account can now hold a new asset, you have to make a payment to send that asset(issuer to destination).
