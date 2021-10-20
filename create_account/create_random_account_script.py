@@ -1,8 +1,8 @@
 import create_account
-from stellar_sdk import Keypair, Server
+from stellar_sdk import Keypair
 
 new_account = Keypair.random()
-genesis_account = "your genesis"
+genesis_account = "your genesis secret seed"
 balance = input("Please enter new account starting balance: ")
 
 account = create_account.create_account(genesis_account,new_account.public_key,balance)
