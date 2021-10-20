@@ -1,7 +1,6 @@
 import payment
-from stellar_sdk import Keypair
 
-source_secret = "your source secret seed"
+source_secret = "SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS"
 dest_account = input("Please, insert the destination account public key: ")
 amount = input("How many lumens would you like to send: ")
 
