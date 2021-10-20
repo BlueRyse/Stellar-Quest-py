@@ -10,4 +10,6 @@ Custom solutions (and useful stuff) in python for stellar quest Series 1, 2, 3
 
 -add_signer is useful to tackle Series 1 Quest 4. You can add a new signer (with weight 1) to any account of your choice.
 
--change_trust is useful to tackle Series 1 Quest 5. After you make a trustline and an account can now hold a new asset, you have to make a payment to send that asset(issuer to destination).
+-change_trust is useful to tackle Series 1 Quest 5. After you make a trustline and an account can now hold a new asset, you have to make a payment to send that asset (issuer to destination).
+
+-manage_sell_offer is useful to tackle Series 1 Quest 6. 
