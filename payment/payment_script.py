@@ -11,4 +11,4 @@ else:
     amount = input("How many " + asset + " would you like to send: ")
     pay = payment.payment(source_secret, dest_account, amount, asset)
 
-print("Sent " + amount + asset + "\nfrom " + pay.source.public_key + "\nto " + dest_account)
+print("Sent " + amount + " " + asset + "\nfrom " + pay.source.public_key + "\nto " + dest_account)
