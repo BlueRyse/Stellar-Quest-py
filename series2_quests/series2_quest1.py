@@ -8,7 +8,7 @@ account_pb = "you account public key"
 string = "Stellar Quest Series 2"
 hash = hashlib.sha256(string.encode('utf-8')).hexdigest()
 
-source=Keypair.random() #account that fudns the new one
+source=Keypair.random() #account that funds the new one
 url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': source.public_key})
 source_account = server.load_account(account_id = source.public_key)
