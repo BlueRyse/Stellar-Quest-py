@@ -1,9 +1,9 @@
 from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 server = Server("https://horizon-testnet.stellar.org")
-asset_iss = 'SCWUTKBTSPKETXBAIFOIK6ZY33AJILNDGJTIN7J5QK7JCZBUFDPFCQKS'
-asset_cd = 'ser2Quest2'
-source_secret = 'SCYJGZX26FFGG4UA25VWG6B3T6L7LBA2CPN4X62X5BIRHKE4BUJKJVNG'
+asset_iss = 'your asset issuer secret seed'
+asset_cd = 'ser2Quest2' #asset code can be whatever
+source_secret = 'your source account secret seed'
 lim = '100'
 
 source_keypair = Keypair.from_secret(source_secret)
