@@ -1,6 +1,6 @@
 import change_trust
 
-source = input("Insert, the source public key: ") #the account that wants to receive the asset
+source = input("Insert the source public key: ") #the account that wants to receive the asset
 asset_issuer = input("Insert the issuer public key: ")
 asset_code = input("Insert the asset code: ") #your asset code
 
