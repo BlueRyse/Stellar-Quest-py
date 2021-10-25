@@ -37,7 +37,7 @@ add_hash_signer_transaction = (
   .build()
 )
 
-dest = 'GAM6Y6ZZ4AIPVYOSJWG7XEHPDP23VJRX2AULK72FGDHKS62MEXAUOBJW' #the account that survives (all XLM will be here after merge)
+dest = 'your destination account(albedo one in the quest)' #the account that survives (all XLM will be here after merge)
 str = signer_string.encode('utf-8')
 hex_signer = str.hex() #the String to hex, the second signer
 merge_transaction = (
