@@ -1,4 +1,4 @@
-#has an example try to add added a :pray: emoji to this account a new random account with stellar laboratory
+#has an example try to add a :pray: emoji to this account a new random account with stellar laboratory
 #this account needs to have a threshold of 10 for ALL operations (like in SQ04:01). The new pray
 #emoji signer will need tohave a weight of 5.The master Weight will need to be 5 as well
 #This means that we need both to sign EVERY transaction (5 + 5 = 10)
