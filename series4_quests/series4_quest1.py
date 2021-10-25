@@ -2,7 +2,8 @@
 #this account has a threshold of 10 for ALL operations (like in SQ04:01). The new pray
 #emoji signer will have a weight of 5. The master Weight will also be 5 as well.
 #This means that we need both to sign EVERY transaction (5 + 5 = 10)
-#After I create a new random account with the emoji signer, I perform a merge account operation.
+#After I create a new random account with the emoji signer, I perform a merge account operation,
+#signing the transaction with the hex of the :pray: emoji and the secret key
 
 from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 import requests, hashlib
@@ -37,7 +38,7 @@ add_hash_signer_transaction = (
   .build()
 )
 
-dest = 'your destination account(albedo one in the quest)' #the account that survives (all XLM will be here after merge)
+dest = 'your destination account(albedo during the quest)' #the account that survives (all XLM will be here after merge)
 str = signer_string.encode('utf-8')
 hex_signer = str.hex() #the String to hex, the second signer
 merge_transaction = (
