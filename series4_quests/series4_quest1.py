@@ -7,7 +7,7 @@ from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 server = Server("https://horizon-testnet.stellar.org")
 
-source_secr_seed = "the account that holds the XLM" #the secret key, the first signer
+source_secr_seed = "the account that holds the XLM and has the :pray: emoji signer" #the secret key, the first signer
 dest = 'your albedo account(if this was pubnet)' #the account that survives (all XLM will be here after merge)
 source = Keypair.from_secret(source_secr_seed)
 source_acc = server.load_account(account_id=source.public_key)
