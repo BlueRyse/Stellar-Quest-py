@@ -23,6 +23,7 @@ payment_transaction = (
         amount = "1",
         asset_code = "XLM"
     )
+    .set_timeout(30)
     .build()
 )
 
