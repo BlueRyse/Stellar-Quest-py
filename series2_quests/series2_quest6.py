@@ -14,7 +14,6 @@ transaction = (
         network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
         base_fee = 100
     )
-    .add_text_memo("Begin Sponsoring")
     .append_begin_sponsoring_future_reserves_op(
         sponsored_id = new_sponsored_account.public_key
     )
