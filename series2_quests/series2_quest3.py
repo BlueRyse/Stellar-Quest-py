@@ -1,32 +1,40 @@
-from stellar_sdk import Keypair, Network, Server, TransactionBuilder
+from stellar_sdk import Keypair, Network, Server, TransactionBuilder, FeeBumpTransaction
 import requests
 
 server = Server("https://horizon-testnet.stellar.org")
 
-source_secr = 'your source secr'
+source_secr = 'SCYJGZX26FFGG4UA25VWG6B3T6L7LBA2CPN4X62X5BIRHKE4BUJKJVNG'
 source_keypair = Keypair.from_secret(source_secr)
+source_acc = server.load_account(source_keypair.public_key)
 
 url = 'https://friendbot.stellar.org'
-fee_channel_keypair = Keypair.random()
-response = requests.get(url, params={'addr': fee_channel_keypair.public_key})
-fee_payer_acc  = server.load_account(fee_channel_keypair.public_key)
+fee_payer_keypair = Keypair.random()
+response = requests.get(url, params={'addr': fee_payer_keypair.public_key})
+fee_payer_acc  = server.load_account(fee_payer_keypair.public_key)
 
-transaction = (
+payment_transaction = (
     TransactionBuilder(
-        source_account = fee_payer_acc,
+        source_account = source_acc,
         network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
         base_fee = 100
     )
-    .add_text_memo("Bump sequence operation")
-    .append_bump_sequence_op(
-        bump_to = source_acc.sequence + 1,
-        source = source_keypair.public_key
+    .append_payment_op(
+        destination = source_keypair.public_key,
+        amount = "1",
+        asset_code = "XLM"
     )
-    .set_timeout(30)
     .build()
 )
 
-transaction.sign(source_keypair)
-transaction.sign(fee_channel_keypair)
+payment_transaction.sign(source_keypair)
 
-repsonse = server.submit_transaction(transaction)
+fee_bump_transaction = (
+    TransactionBuilder.build_fee_bump_transaction(
+        fee_source = fee_payer_keypair.public_key,
+        base_fee = 100,
+        inner_transaction_envelope = payment_transaction
+    )
+)
+
+fee_bump_transaction.sign(fee_payer_keypair)
+response = server.submit_transaction(fee_bump_transaction)
