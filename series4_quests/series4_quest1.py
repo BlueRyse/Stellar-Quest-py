@@ -41,6 +41,7 @@ add_hash_signer_transaction = (
 dest = 'your destination account(albedo during the quest)' #the account that survives (all XLM will be here after merge)
 str = signer_string.encode('utf-8')
 hex_signer = str.hex() #the String to hex, the second signer
+
 merge_transaction = (
     TransactionBuilder(
         source_account = keypair_account,
