@@ -1,6 +1,6 @@
 import create_account
 
-genesis_account = "your genesis secret seed"
+genesis_account = input("Insert the genesis account secret: ") #the account that's gonna fund the new one
 new_account_public_ID = input("Please enter the new account Public ID: ")
 balance = input("Please enter new account starting balance: ")
 
