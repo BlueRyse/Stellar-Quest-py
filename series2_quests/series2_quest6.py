@@ -2,7 +2,7 @@ from stellar_sdk import Keypair, Network, Server, TransactionBuilder
 
 server = Server("https://horizon-testnet.stellar.org")
 
-source_secr = 'your source'
+source_secr = 'your source secret'
 source_keypair = Keypair.from_secret(source_secr)
 source_acc = server.load_account(source_keypair.public_key)
 
