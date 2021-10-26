@@ -9,11 +9,11 @@ source_keypair = Keypair.from_secret(source_secr)
 url = 'https://friendbot.stellar.org'
 fee_channel_keypair = Keypair.random()
 response = requests.get(url, params={'addr': fee_channel_keypair.public_key})
-source_acc  = server.load_account(fee_channel_keypair.public_key)
+fee_payer_acc  = server.load_account(fee_channel_keypair.public_key)
 
 transaction = (
     TransactionBuilder(
-        source_account = source_acc,
+        source_account = fee_payer_acc,
         network_passphrase = Network.TESTNET_NETWORK_PASSPHRASE,
         base_fee = 100
     )
