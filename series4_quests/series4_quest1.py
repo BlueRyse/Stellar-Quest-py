@@ -15,7 +15,8 @@ url = 'https://friendbot.stellar.org'
 response = requests.get(url, params={'addr': keypair.public_key})
 keypair_account = server.load_account(account_id=keypair.public_key)
 signer_string = ":pray:"
-sha256_signer = hashlib.sha256(signer_string.encode('utf-8')).hexdigest() #this will be added as a Signer
+str = signer_string.encode('utf-8')
+sha256_signer = hashlib.sha256(str).hexdigest() #this will be added as a Signer
 
 add_hash_signer_transaction = (
     TransactionBuilder(
@@ -39,7 +40,6 @@ add_hash_signer_transaction = (
 )
 
 dest = 'your destination account(albedo during the quest)' #the account that survives (all XLM will be here after merge)
-str = signer_string.encode('utf-8')
 hex_signer = str.hex() #the String to hex, the second signer
 
 merge_transaction = (
